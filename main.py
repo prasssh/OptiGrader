@@ -2,10 +2,12 @@ import numpy as np
 import cv2
 import functions
 path = "1.jpg"
-widthImg = 600
-heightImg = 600
+widthImg = 500
+heightImg = 500
 
 img = cv2.imread(path)
+
+#image pre-processing
 img2 = cv2.resize(img, (widthImg, heightImg))  #image resizing
 imgContours = img.copy()
 imgBiggestContours = img.copy()
@@ -18,8 +20,9 @@ cv2.drawContours(imgContours, contours, -1, (0, 255, 0), 10)
 
 
 imgBlank = np.zeros_like(img)
-imageArray = ([img, imgGray,imgBlur,imgCanny])
-imgStacked = functions.stackImages(imageArray,0.3)
+imageArray = ([img, imgGray,imgBlur,imgCanny],
+            [imgContours,imgBiggestContours,imgBlank, imgBlank])
+imgStacked = functions.stackImages(imageArray,0.2)
 cv2.imshow("Stacked", imgStacked)
 cv2.waitKey(0)
 
