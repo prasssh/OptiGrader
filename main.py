@@ -20,6 +20,11 @@ contours, hierarchy = cv2.findContours(imgCanny, cv2.RETR_EXTERNAL, cv2.CHAIN_AP
 cv2.drawContours(imgContours, contours, -1, (0, 255, 0), 10)
 
 
+#finding rectangles
+rectCon = functions.rectContour(contours)
+biggestContour = functions.getCornerPoints(rectCon[0])
+
+
 imgBlank = np.zeros_like(img)
 imageArray = ([img, imgGray,imgBlur,imgCanny],
             [imgContours,imgBiggestContours,imgBlank, imgBlank])
