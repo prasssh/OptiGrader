@@ -1,7 +1,7 @@
 import numpy as np 
 import cv2
 import functions
-path = "1.jpg"
+path = "2.jpg"
 widthImg = 600
 heightImg = 600
 
