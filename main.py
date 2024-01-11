@@ -20,7 +20,7 @@ imgCanny= cv2.Canny(imgBlur,10,50)
 
 imageArray = ([img, imgGray,imgBlur,imgCanny])
 
-cv2.imshow("Stacked",)
+cv2.imshow("Stacked", )
 cv2.waitKey(0)
 
 
