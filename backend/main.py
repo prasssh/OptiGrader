@@ -38,7 +38,12 @@ if biggestContour.size != 0 and gradePoints.size != 0:
     matrix = cv2.getPerspectiveTransform(pts1, pts2) #get transformation matrix
     imgWarpColored = cv2.warpPerspective(img, matrix, (widthImg, heightImg)) #apply wrap perspective
 
-
+    #wrapping second largest rectangle
+    gradePoints = functions.reorder(gradePoints) # REORDER FOR WARPING
+    ptsG1 = np.float32(gradePoints)  # PREPARE POINTS FOR WARP
+    ptsG2 = np.float32([[0, 0], [325, 0], [0, 150], [325, 150]])  # PREPARE POINTS FOR WARP
+    matrixG = cv2.getPerspectiveTransform(ptsG1, ptsG2)# GET TRANSFORMATION MATRIX
+    imgGradeDisplay = cv2.warpPerspective(img, matrixG, (325, 150)) # APPLY WARP PERSPECTIVE
 
 imgBlank = np.zeros_like(img)
 imageArray = ([img, imgGray,imgBlur,imgCanny],
