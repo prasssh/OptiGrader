@@ -53,3 +53,7 @@ def rectContour(contours):
     #print(len(rectCon))
     return rectCon
 
+def getCornerPoints(cont):
+    peri = cv2.arcLength(cont, True) #for thw length of the contour
+    approx = cv2. approxPolyDP(cont, 0.02*peri, True) #Approximate the polygon to get the corner points
+    return approx
