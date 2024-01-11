@@ -39,7 +39,7 @@ def stackImages(imgArray,scale,lables=[]):
                 cv2.putText(ver,lables[d][c],(eachImgWidth*c+10,eachImgHeight*d+20),cv2.FONT_HERSHEY_COMPLEX,0.7,(255,0,255),2)
     return ver
 
-def rectContours(contours):
+def rectContour(contours):
     rectCon = []
     max_area = 0
     for i in contours:
