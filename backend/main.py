@@ -45,6 +45,7 @@ if biggestContour.size != 0 and gradePoints.size != 0:
     matrixG = cv2.getPerspectiveTransform(ptsG1, ptsG2)# GET TRANSFORMATION MATRIX
     imgGradeDisplay = cv2.warpPerspective(img, matrixG, (325, 150)) # APPLY WARP PERSPECTIVE
 
+
 imgBlank = np.zeros_like(img)
 imageArray = ([img, imgGray,imgBlur,imgCanny],
             [imgContours,imgBiggestContours,imgBlank, imgBlank])

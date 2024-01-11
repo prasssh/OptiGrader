@@ -39,6 +39,20 @@ def stackImages(imgArray,scale,lables=[]):
                 cv2.putText(ver,lables[d][c],(eachImgWidth*c+10,eachImgHeight*d+20),cv2.FONT_HERSHEY_COMPLEX,0.7,(255,0,255),2)
     return ver
 
+def reorder(myPoints):
+    myPoints = myPoints.reshape((4, 2)) # REMOVE EXTRA BRACKET
+    print(myPoints)
+    myPointsNew = np.zeros((4, 1, 2), np.int32) # NEW MATRIX WITH ARRANGED POINTS
+    add = myPoints.sum(1)
+    print(add)
+    print(np.argmax(add))
+    myPointsNew[0] = myPoints[np.argmin(add)]  #[0,0]
+    myPointsNew[3] =myPoints[np.argmax(add)]   #[w,h]
+    diff = np.diff(myPoints, axis=1)
+    myPointsNew[1] =myPoints[np.argmin(diff)]  #[w,0]
+    myPointsNew[2] = myPoints[np.argmax(diff)] #[h,0]
+    return myPointsNew
+
 def rectContour(contours):
     rectCon = []
     max_area = 0
@@ -57,3 +71,4 @@ def getCornerPoints(cont):
     peri = cv2.arcLength(cont, True) #for thw length of the contour
     approx = cv2. approxPolyDP(cont, 0.02*peri, True) #Approximate the polygon to get the corner points
     return approx
+
