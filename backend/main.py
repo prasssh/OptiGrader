@@ -28,7 +28,16 @@ gradePoints = functions.getCornerPoints(rectCon[1]) #get corner points
 
 if biggestContour.size != 0 and gradePoints.size != 0:
     #wrapping biggest rctangle
-    
+    cv2.drawContours(imgBiggestContours, biggestContour, -1, (0, 255, 0), 20) 
+    cv2.drawContours(imgBiggestContours, gradePoints, -1, (255, 0, 0), 20)
+
+    biggestContour= functions.reorder(biggestContour)
+    gradePoints = functions.reorder(gradePoints)
+    pts1 = np. float32(biggestContour)  #preparing points for wrap
+    pts2 = np. float32([[0,0],[widthImg, 0], [0, heightImg], [widthImg, heightImg]]) #prepare points for wrap
+    matrix = cv2.getPerspectiveTransform(pts1, pts2) #get transformation matrix
+    imgWarpColored = cv2.warpPerspective(img, matrix, (widthImg, heightImg)) #apply wrap perspective
+
 
 
 imgBlank = np.zeros_like(img)
