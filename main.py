@@ -24,6 +24,7 @@ cv2.drawContours(imgContours, contours, -1, (0, 255, 0), 10)
 rectCon = functions.rectContour(contours)
 biggestContour = functions.getCornerPoints(rectCon[0])
 gradePoints = functions.getCornerPoints(rectCon[1]) #get corner points
+print(biggestContour)
 
 
 imgBlank = np.zeros_like(img)
