@@ -2,8 +2,8 @@
 import cv2
 import numpy as np
 
-# import tkinter as tk
-# from tkinter import filedialog
+import tkinter as tk
+from tkinter import filedialog
 
 ## TO STACK ALL THE IMAGES IN ONE WINDOW
 def stackImages(imgArray,scale,lables=[]):
@@ -122,14 +122,14 @@ def showAnswers(img,myIndex,grading,ans,questions=5,choices=5):
             correctAns = ans[x]
             cv2.circle(img,((correctAns * secW)+secW//2, (x * secH)+secH//2),20,myColor,cv2.FILLED)
 
-# #SAVE THE SCANNED IMAGE
-# def save_scanned_image(imgFinal, count):
-#     root = tk.Tk()
-#     root.withdraw()
+#SAVE THE SCANNED IMAGE
+def save_scanned_image(imgFinal, count):
+    root = tk.Tk()
+    root.withdraw()
 
-#     # SAVE IMAGE
-#     file_path = filedialog.asksaveasfilename(defaultextension=".jpg", filetypes=[("JPEG files", "*.jpg")])
-#     if file_path:
-#         cv2.imwrite(file_path, imgFinal)
-#         # ... (display message, etc.)
-#         count += 1
+    # SAVE IMAGE
+    file_path = filedialog.asksaveasfilename(defaultextension=".jpg", filetypes=[("JPEG files", "*.jpg")])
+    if file_path:
+        cv2.imwrite(file_path, imgFinal)
+        # ... (display message, etc.)
+        count += 1

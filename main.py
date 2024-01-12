@@ -143,8 +143,6 @@ while True:
         count += 1
         print("Image saved successfully")
         count +=1
-
-
-
+        
     elif cv2.waitKey(1) & 0xFF == ord('q'):
         break
