@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "731955383498",
+    "project_id": "hack-74075",
+    "storage_bucket": "hack-74075.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731955383498:android:9549bdaac4de9494b8b833",
+        "android_client_info": {
+          "package_name": "com.example.check"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb8ORbcQLtKCYA_I1fNTt6DxgNSR2WtEg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
