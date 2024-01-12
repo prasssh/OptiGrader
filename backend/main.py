@@ -1,8 +1,8 @@
 import numpy as np 
 import cv2
 import functions
-path = "1.jpg"
-widthImg = 500
+path = "MarkedAnswer.jpg"
+widthImg = 700
 heightImg = 500
 
 img = cv2.imread(path)
@@ -49,12 +49,7 @@ if biggestContour.size != 0 and gradePoints.size != 0:
 imgBlank = np.zeros_like(img)
 imageArray = ([img, imgGray,imgBlur,imgCanny],
             [imgContours,imgBiggestContours,imgBlank, imgBlank])
-imgStacked = functions.stackImages(imageArray,0.2)
+imgStacked = functions.stackImages(imageArray,0.6)
 cv2.imshow("Stacked", imgStacked)
 cv2.waitKey(0)
-
-
-
-
-
 
