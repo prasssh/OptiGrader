@@ -1,7 +1,7 @@
 import numpy as np 
 import cv2
 import functions
-path = "MarkedAnswer.jpg"
+path = "answer.jpg"
 widthImg = 700
 heightImg = 500
 
