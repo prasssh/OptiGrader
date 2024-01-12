@@ -45,6 +45,8 @@ if biggestContour.size != 0 and gradePoints.size != 0:
     matrixG = cv2.getPerspectiveTransform(ptsG1, ptsG2)# GET TRANSFORMATION MATRIX
     imgGradeDisplay = cv2.warpPerspective(img, matrixG, (325, 150)) # APPLY WARP PERSPECTIVE
 
+    #for threshold
+    
 
 imgBlank = np.zeros_like(img)
 imageArray = ([img, imgGray,imgBlur,imgCanny],
@@ -52,9 +54,4 @@ imageArray = ([img, imgGray,imgBlur,imgCanny],
 imgStacked = functions.stackImages(imageArray,0.2)
 cv2.imshow("Stacked", imgStacked)
 cv2.waitKey(0)
-
-
-
-
-
 
