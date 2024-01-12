@@ -1,11 +1,11 @@
 import cv2
 import numpy as np
 import functions
-# import tkinter as tk
-# from tkinter import filedialog
+import datetime
+
 
 webCamFeed = True
-pathImage = "SecondSheet.jpg"
+pathImage = "ThirdSheet.jpg"
 # cap = cv2.VideoCapture(0)
 # cap.set(10,160)
 heightImg = 700
@@ -128,14 +128,20 @@ while True:
     cv2.imshow("Result",stackedImage)
 
     # SAVE IMAGE WHEN 's' key is pressed
+    
     if cv2.waitKey(1) & 0xFF == ord('s'):
-        cv2.imwrite("F:\\hackathon\\ScannedImages" + str(count) + ".jpg", imgFinal)
+        timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")  # Generate timestamp
+        file_path = f"F:\\hackathon\\ScannedImages\\myImage_{timestamp}.jpg"
+        print(f"Saving image to: {file_path}")
+        cv2.imwrite(file_path, imgFinal)
         cv2.rectangle(stackedImage, ((int(stackedImage.shape[1] / 2) - 230), int(stackedImage.shape[0] / 2) + 50),
-                    (1100, 350), (0, 255, 0), cv2.FILLED)
-        cv2.putText(stackedImage, "Scan Saved", (int(stackedImage.shape[1] / 2) - 200, int(stackedImage.shape[0] / 2)),
+                        (1100, 350), (0, 255, 0), cv2.FILLED)
+        cv2.putText(stackedImage, "Scan Saved", (int(stackedImage.shape[1] / 2) - 200,
+                                                    int(stackedImage.shape[0] / 2)),
                     cv2.FONT_HERSHEY_DUPLEX, 3, (0, 0, 255), 5, cv2.LINE_AA)
         cv2.imshow('Result', stackedImage)
         cv2.waitKey(300)
+        count += 1
 
         file_path = f"F:\\hackathon\\ScannedImages\\myImage{count}.jpg"
         print(f"Saving image to: {file_path}")
