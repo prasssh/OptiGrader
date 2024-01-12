@@ -1,9 +1,11 @@
 import cv2
 import numpy as np
-import utlis
+import functions
+# import tkinter as tk
+# from tkinter import filedialog
 
 webCamFeed = True
-pathImage = "2.jpg"
+pathImage = "SecondSheet.jpg"
 # cap = cv2.VideoCapture(0)
 # cap.set(10,160)
 heightImg = 700
@@ -33,16 +35,16 @@ while True:
         imgBigContour = img.copy() # COPY IMAGE FOR DISPLAY PURPOSES
         contours, hierarchy = cv2.findContours(imgCanny, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE) # FIND ALL CONTOURS
         cv2.drawContours(imgContours, contours, -1, (0, 255, 0), 10) # DRAW ALL DETECTED CONTOURS
-        rectCon = utlis.rectContour(contours) # FILTER FOR RECTANGLE CONTOURS
-        biggestPoints= utlis.getCornerPoints(rectCon[0]) # GET CORNER POINTS OF THE BIGGEST RECTANGLE
-        gradePoints = utlis.getCornerPoints(rectCon[1]) # GET CORNER POINTS OF THE SECOND BIGGEST RECTANGLE
+        rectCon = functions.rectContour(contours) # FILTER FOR RECTANGLE CONTOURS
+        biggestPoints= functions.getCornerPoints(rectCon[0]) # GET CORNER POINTS OF THE BIGGEST RECTANGLE
+        gradePoints = functions.getCornerPoints(rectCon[1]) # GET CORNER POINTS OF THE SECOND BIGGEST RECTANGLE
 
         
 
         if biggestPoints.size != 0 and gradePoints.size != 0:
 
             # BIGGEST RECTANGLE WARPING
-            biggestPoints=utlis.reorder(biggestPoints) # REORDER FOR WARPING
+            biggestPoints=functions.reorder(biggestPoints) # REORDER FOR WARPING
             cv2.drawContours(imgBigContour, biggestPoints, -1, (0, 255, 0), 20) # DRAW THE BIGGEST CONTOUR
             pts1 = np.float32(biggestPoints) # PREPARE POINTS FOR WARP
             pts2 = np.float32([[0, 0],[widthImg, 0], [0, heightImg],[widthImg, heightImg]]) # PREPARE POINTS FOR WARP
@@ -51,7 +53,7 @@ while True:
 
             # SECOND BIGGEST RECTANGLE WARPING
             cv2.drawContours(imgBigContour, gradePoints, -1, (255, 0, 0), 20) # DRAW THE BIGGEST CONTOUR
-            gradePoints = utlis.reorder(gradePoints) # REORDER FOR WARPING
+            gradePoints = functions.reorder(gradePoints) # REORDER FOR WARPING
             ptsG1 = np.float32(gradePoints)  # PREPARE POINTS FOR WARP
             ptsG2 = np.float32([[0, 0], [325, 0], [0, 150], [325, 150]])  # PREPARE POINTS FOR WARP
             matrixG = cv2.getPerspectiveTransform(ptsG1, ptsG2)# GET TRANSFORMATION MATRIX
@@ -61,7 +63,7 @@ while True:
             imgWarpGray = cv2.cvtColor(imgWarpColored,cv2.COLOR_BGR2GRAY) # CONVERT TO GRAYSCALE
             imgThresh = cv2.threshold(imgWarpGray, 170, 255,cv2.THRESH_BINARY_INV )[1] # APPLY THRESHOLD AND INVERSE
 
-            boxes = utlis.splitBoxes(imgThresh) # GET INDIVIDUAL BOXES
+            boxes = functions.splitBoxes(imgThresh) # GET INDIVIDUAL BOXES
             cv2.imshow("Split Test ", boxes[3])
             countR=0
             countC=0
@@ -92,10 +94,10 @@ while True:
             #print("SCORE",score)
 
             # DISPLAYING ANSWERS
-            utlis.showAnswers(imgWarpColored,myIndex,grading,ans) # DRAW DETECTED ANSWERS
-            utlis.drawGrid(imgWarpColored) # DRAW GRID
+            functions.showAnswers(imgWarpColored,myIndex,grading,ans) # DRAW DETECTED ANSWERS
+            functions.drawGrid(imgWarpColored) # DRAW GRID
             imgRawDrawings = np.zeros_like(imgWarpColored) # NEW BLANK IMAGE WITH WARP IMAGE SIZE
-            utlis.showAnswers(imgRawDrawings, myIndex, grading, ans) # DRAW ON NEW IMAGE
+            functions.showAnswers(imgRawDrawings, myIndex, grading, ans) # DRAW ON NEW IMAGE
             invMatrix = cv2.getPerspectiveTransform(pts2, pts1) # INVERSE TRANSFORMATION MATRIX
             imgInvWarp = cv2.warpPerspective(imgRawDrawings, invMatrix, (widthImg, heightImg)) # INV IMAGE WARP
 
@@ -122,16 +124,27 @@ while True:
     lables = [["Original","Gray","Edges","Contours"],
               ["Biggest Contour","Threshold","Warpped","Final"]]
 
-    stackedImage = utlis.stackImages(imageArray,0.5,lables)
+    stackedImage = functions.stackImages(imageArray,0.5,lables)
     cv2.imshow("Result",stackedImage)
 
     # SAVE IMAGE WHEN 's' key is pressed
     if cv2.waitKey(1) & 0xFF == ord('s'):
-        cv2.imwrite("Scanned/myImage"+str(count)+".jpg",imgFinal)
+        cv2.imwrite("F:\\hackathon\\ScannedImages" + str(count) + ".jpg", imgFinal)
         cv2.rectangle(stackedImage, ((int(stackedImage.shape[1] / 2) - 230), int(stackedImage.shape[0] / 2) + 50),
-                      (1100, 350), (0, 255, 0), cv2.FILLED)
+                    (1100, 350), (0, 255, 0), cv2.FILLED)
         cv2.putText(stackedImage, "Scan Saved", (int(stackedImage.shape[1] / 2) - 200, int(stackedImage.shape[0] / 2)),
                     cv2.FONT_HERSHEY_DUPLEX, 3, (0, 0, 255), 5, cv2.LINE_AA)
         cv2.imshow('Result', stackedImage)
         cv2.waitKey(300)
+
+        file_path = f"F:\\hackathon\\ScannedImages\\myImage{count}.jpg"
+        print(f"Saving image to: {file_path}")
+        cv2.imwrite(file_path, imgFinal)
         count += 1
+        print("Image saved successfully")
+        count +=1
+
+
+
+    elif cv2.waitKey(1) & 0xFF == ord('q'):
+        break
