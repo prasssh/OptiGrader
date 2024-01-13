@@ -6,4 +6,7 @@ This project utilizes OpenCV in Python to revolutionize the grading process for 
 For frontend, we have used Flutter as we are making an app and for backend, python has been used.
 To process the image, OMR is used; mose specifically OpenCV
 
+[optigrader.pptx](https://github.com/prasssh/Shunya/files/13926793/optigrader.pptx)
+
+
 
