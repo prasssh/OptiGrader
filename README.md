@@ -34,7 +34,9 @@ BACKEND
 -Flask API
 
 **Screenshots**
+
 ![front](https://github.com/prasssh/Shunya/assets/139346117/ac4b545a-4a37-4439-865b-c557a5580beb)
+
 ![signup](https://github.com/prasssh/Shunya/assets/139346117/fb8d2d35-a0bb-499d-9343-1d8b643e8739)
 
 
