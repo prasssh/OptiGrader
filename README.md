@@ -1,2 +1,0 @@
-# OptiGrader -
-# Optical Mark Recognition 
