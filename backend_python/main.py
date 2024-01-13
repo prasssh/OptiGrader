@@ -6,8 +6,8 @@ import datetime
 
 webCamFeed = True
 pathImage = "ThirdSheet.jpg"
-cap = cv2.VideoCapture(0)
-cap.set(10,160)
+# cap = cv2.VideoCapture(0)
+# cap.set(10,160)
 heightImg = 700
 widthImg  = 700
 questions=5
@@ -19,7 +19,7 @@ count=0
 while True:
     
     #if webCamFeed:success, img = cap.read()
-    #else:
+    # else:
     img = cv2.imread(pathImage)
     
     img = cv2.resize(img, (widthImg, heightImg)) # RESIZE IMAGE
