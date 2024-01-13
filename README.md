@@ -1,12 +1,46 @@
 # OptiGrader -
 # Optical Mark Recognition 
-This project utilizes OpenCV in Python to revolutionize the grading process for multiple-choice answer sheets. The system incorporates a camera for seamless image capture, eliminating the need for traditional scanning devices and enhancing accessibility.  Its Optical Mark Recognition (OMR) feature precisely identifies and interprets marked bubbles, while a sophisticated grading algorithm automates the scoring process based on a predefined answer key. This not only reduces the potential for human error but also significantly expedites the grading process, offering a faster turnaround for any kind of assessment results.
+![Logo1](https://github.com/prasssh/Shunya/assets/139346117/03348042-d74b-4d0d-9bcf-6bf53db655fa)
 
-**Tech Stach used**
-For frontend, we have used Flutter as we are making an app and for backend, python has been used.
-To process the image, OMR is used; mose specifically OpenCV
+**PROJECT DESCRIPTION**
+Revolutionize multiple-choice grading with OpenCV in Python. Our system, using a camera for image capture, eliminates traditional scanners for seamless accessibility. The Optical Mark Recognition (OMR) feature interprets bubbles accurately, while a smart grading algorithm reduces errors, expediting results for faster assessments.
+1. Image Processing
+2. Contour Detection
+3. Perspective Transformation(Warping)
+4. Thresholding and Box Splitting
+5. Answer Detection
+6. Grading
+7. Visualization
+8. Saving Result
 
-[optigrader.pptx](https://github.com/prasssh/Shunya/files/13926793/optigrader.pptx)
+**Problem:**
+Traditional grading methods for multiple-choice answer sheets rely on scanning devices, posing challenges in terms of accessibility and speed.
+
+**Solution:**
+Utilizing OpenCV in Python, our project modernizes the grading process by employing a camera for image capture, eliminating the need for traditional scanners.
+
+**Key Features**
+1. Seamless Image Capture
+2. Optical Mark Recognition
+3. Grading Algorithm
+
+
+**Tech Stack used**
+FRONTEND
+- Flutter (Dart, Firebase)
+BACKEND
+-Python
+-OpenCV (Image Processing)
+-Flask API
+
+**Screenshots**
+
+
+**Video**
+
+https://github.com/prasssh/Shunya/assets/139346117/dde62af9-70a7-48ab-beb4-b4e593a1a1b7
+
+
 
 
 
