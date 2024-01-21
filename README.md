@@ -39,8 +39,6 @@ BACKEND
 
 ![signup](https://github.com/prasssh/Shunya/assets/139346117/fb8d2d35-a0bb-499d-9343-1d8b643e8739)
 
-![myImage_20240112115534](https://github.com/prasssh/Shunya/assets/139346117/31e336fe-f8cb-48c6-a225-bd4367e7f3fa)
-
 ![myImage_20240112120833](https://github.com/prasssh/Shunya/assets/139346117/6a168f1e-5046-4f04-93d9-4560a80c876b)
 
 
